@@ -1,93 +1,60 @@
-# 🐄 Cattle & Buffalo Breed Recognition System
+# Cattle Breed Predictor 🐄
 
-An AI-powered prototype to identify Indian cattle and buffalo breeds from images. Built with a React frontend and a Flask backend.
+An AI-powered application designed to identify and predict cattle and buffalo breeds from images. It uses a React frontend for the user interface and a Flask Python backend to process images and perform breed classification.
 
-## 📝 Overview
-Accurate breed identification aids livestock management, conservation, dairy optimization, and veterinary research.
+## 🚀 Features
 
-## ✨ Key Features
-- Frontend (React + Tailwind)
-  - Drag-and-drop upload with preview
-  - Responsive, modern UI
-  - Progress + loading states
-  - Client-side validation and errors
-- Backend (Flask)
-  - Secure file validation and size limits
-  - CORS configured for local dev
-  - Health check endpoint
-  - Structured logging
+- **Image Upload:** Users can upload images of cattle/buffalo easily via a drag-and-drop interface.
+- **Breed Prediction:** Quickly identifies the breed with a confidence score.
+- **Detailed Information:** Provides a brief description of the detected breed's characteristics.
+- **Fully Responsive:** Beautifully designed UI that works perfectly across mobile, tablet, and desktop screens.
 
-## 🏗 Architecture
-```mermaid
-graph TD
-    A[User Interface] -->|Uploads Image| B[React Frontend]
-    B -->|Sends Image| C[Flask Backend]
-    C -->|Processes Image| D[Breed Prediction]
-    D -->|Returns Prediction| C
-    C -->|Sends Result| B
-    B -->|Displays| A
-```
+## 💻 Tech Stack
 
-## 🚀 Quick Start (Windows)
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Flask, Python (Pillow for image processing)
 
-1) Backend setup
-```powershell
-cd "backend"
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
-```
+## 🛠️ Installation & Setup
 
-2) Frontend setup
-```powershell
-cd "frontend"
-copy .env.example .env   # Adjust API URL if needed
-npm install
-npm start
-```
+### Prerequisites
 
-3) Access
-- Frontend: http://localhost:3000
-- Backend API: http://127.0.0.1:5000
-- Health Check: http://127.0.0.1:5000/health
+- Node.js & npm (for the frontend)
+- Python 3.x & pip (for the backend)
 
-## 📊 API Endpoints
-- POST `/predict`
-  - Body: FormData with `image`
-  - Response: `{ breed, confidence, description, filename, size_bytes }`
-- GET `/health`
-  - Response: `{ status: "ok", message, time }`
-- GET `/breeds`
-  - Response: `{ breeds: string[] }`
+### Backend Setup
 
-## 🔒 Security & Validation
-- File type and size validation (default 8 MB)
-- Safe filename handling
-- Image content verification with Pillow
-- CORS limited to localhost dev by default
+1. Navigate to the `backend/` directory:
+   ```bash
+   cd backend
+   ```
+2. Install the required Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the Flask server:
+   ```bash
+   python app.py
+   ```
+   *The server runs on http://localhost:5000*
 
-## 🔧 Configuration
-- Backend: `backend/config.py`
-  - `MAX_UPLOAD_MB` (env) default 8
-  - `CORS_ORIGINS` (env) default `http://localhost:3000,http://127.0.0.1:3000`
-- Frontend: `frontend/.env`
-  - `REACT_APP_API_URL` default `http://127.0.0.1:5000`
-  - `REACT_APP_DEBUG` default `true`
+### Frontend Setup
 
-## 🐛 Troubleshooting
-- CORS errors: ensure backend running and CORS origins allow your frontend origin
-- File upload fails: check size/type and logs in `backend/logs/app.log`
-- Frontend build errors: run `npm install` inside `frontend/`
+1. Open a new terminal and navigate to the `frontend/` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install the Node dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
+   *The app will automatically open at http://localhost:3000*
 
-## 📈 Future Enhancements
-- Real ML model integration
-- Batch uploads and export
-- Auth + user profiles
-- Offline support via service workers
+## 📁 Project Structure
 
-## 📄 License
-MIT License - See [LICENSE](LICENSE)
-
----
-Developed with ❤ for the agricultural community
+- `backend/`: Contains the Flask server, prediction logic, and configuration.
+- `frontend/`: Contains the React UI components, Tailwind styling, and API connections.
+- `test_images/`: A collection of sample images used for testing breed detection.
