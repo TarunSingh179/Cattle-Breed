@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "cattle-buffalo-breed-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.10"
+  },
+  "scripts": {
+    "start": "concurrently \"npm:tailwind:watch\" \"react-scripts start\"",
+    "tailwind:watch": "tailwindcss -c tailwind.config.js -i ./src/index.css -o ./src/output.css --watch",
+    "build": "tailwindcss -c tailwind.config.js -i ./src/index.css -o ./src/output.css && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
